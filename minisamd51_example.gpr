@@ -1,0 +1,25 @@
+with "minisamd51_bsp";
+
+project Minisamd51_Example is
+
+  for Languages use ("Ada", "ASM_CPP");
+  for Source_Dirs use ("src");
+  for Object_Dir use "obj";
+  for Target use Minisamd51_Bsp'Target;
+  for Runtime ("Ada") use Minisamd51_Bsp'Runtime ("Ada");
+  for Main use ("main.adb");
+
+  package Device_Configuration renames Minisamd51_Bsp.Device_Configuration;
+  package Compiler renames Minisamd51_Bsp.Compiler;
+
+  package Builder is
+     for Executable ("main.adb") use "minisamd51_example.elf";
+  end Builder;
+
+  package Linker is
+     for Switches ("Ada") use ("-T", Project'Project_dir & "/src/link.ld",
+                               "-Wl,--print-memory-usage",
+                               "-Wl,--gc-sections");
+  end Linker;
+
+end Minisamd51_Example;
