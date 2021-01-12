@@ -1,6 +1,6 @@
 description = "Example project for the MiniSAM D51"
 name = "minisamd51_example"
-version = "0.1.0"
+version = "0.1.1"
 licenses = ["BSD 3-Clauses"]
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
